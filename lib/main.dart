@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:training_app/home_page.dart';
 
+//https://www.youtube.com/watch?v=svQOxQde0bg&t=6554s
+//https://www.youtube.com/watch?v=OXQ5ee6p9ZA
 void main() {
   runApp(const MyApp());
 }
