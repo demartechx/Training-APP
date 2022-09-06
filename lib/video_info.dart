@@ -40,8 +40,8 @@ class _VideoInfoState extends State<VideoInfo> {
   @override
   void dispose() {
     _disposed = true;
-    _controller!.pause();
-    _controller!.dispose();
+    _controller?.pause();
+    _controller?.dispose();
     _controller = null;
     super.dispose();
   }
@@ -287,7 +287,7 @@ class _VideoInfoState extends State<VideoInfo> {
   }
 
   Widget _controlView(BuildContext context) {
-    final noMute = (_controller?.value?.volume ?? 0) > 0;
+    final noMute = (_controller?.value.volume ?? 0) > 0;
     final duration = _duration?.inSeconds ?? 0;
     final head = _position?.inSeconds ?? 0;
     final remained = max(0, duration - head);
@@ -301,18 +301,18 @@ class _VideoInfoState extends State<VideoInfo> {
           data: SliderTheme.of(context).copyWith(
             activeTrackColor: Colors.red[700],
             inactiveTrackColor: Colors.red[100],
-            trackShape: RoundedRectSliderTrackShape(),
+            trackShape: const RoundedRectSliderTrackShape(),
             trackHeight: 2.0,
-            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
+            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
             thumbColor: Colors.redAccent,
             overlayColor: Colors.red.withAlpha(32),
-            overlayShape: RoundSliderOverlayShape(overlayRadius: 28.0),
-            tickMarkShape: RoundSliderTickMarkShape(),
+            overlayShape: const RoundSliderOverlayShape(overlayRadius: 28.0),
+            tickMarkShape: const RoundSliderTickMarkShape(),
             activeTickMarkColor: Colors.red[700],
             inactiveTickMarkColor: Colors.red[100],
-            valueIndicatorShape: PaddleSliderValueIndicatorShape(),
+            valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
             valueIndicatorColor: Colors.redAccent,
-            valueIndicatorTextStyle: TextStyle(
+            valueIndicatorTextStyle: const TextStyle(
               color: Colors.white,
             ),
           ),
@@ -331,7 +331,7 @@ class _VideoInfoState extends State<VideoInfo> {
               _controller?.pause();
             },
             onChangeEnd: (value) {
-              final duration = _controller?.value?.duration;
+              final duration = _controller?.value.duration;
               if (duration != null) {
                 var newValue = max(0, min(value, 99)) * 0.01;
                 var millis = (duration.inMilliseconds * newValue).toInt();
